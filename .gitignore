@@ -1,0 +1,36 @@
+# --- Rails ---
+/log/
+/tmp/
+!/log/.keep
+!/tmp/.keep
+
+/config/master.key
+/config/credentials.yml.enc
+
+# Ignore dotenv files
+.env
+.env.*
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# Byebug command history
+.byebug_history
+
+# Ignore cache
+/.bundle/
+/vendor/bundle
+/coverage/
+/node_modules/
+/public/assets
+/public/packs
+/public/packs-test
+/public/vite-dev
+.yarn-cache
+.yarn
+
+# --- System ---
+*.swp
+.DS_Store
+.vscode/

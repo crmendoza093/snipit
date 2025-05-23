@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  host: localhost
+  pool: 5
+
+development:
+  <<: *default
+  database: snipit_development
+
+test:
+  <<: *default
+  database: snipit_test
+
+production:
+  <<: *default
+  database: snipit_production
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
