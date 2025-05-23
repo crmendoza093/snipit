@@ -66,6 +66,12 @@ rails db:migrate
 rails server
 ```
 
+## Ejecutar test
+
+```bash
+bundle exec rspec
+```
+
 ### Estructura de la base de datos
 
 ## Uso

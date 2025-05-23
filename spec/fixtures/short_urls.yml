@@ -1,0 +1,7 @@
+one:
+  original_url: https://example.com/search?filters=type%3Aresearch%2Cyear%3A2024%2Clanguage%3Aenglish&sort=relevance&session_id=1234567890abcdef1234567890abcdef&referrer=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dai%2Bhealthcare&tracking_id=abcde12345fghij67890klmnopqrstu&extra_param_1=this_is_a_very_long_value_to_test_url_length_handling_and_to_see_if_any_system_breaks_or_throws_errors_when_processing_it&extra_param_2=another_extremely_long_value_that_contains_numbers_1234567890_and_symbols_%40%23%24%25%5E%26*()
+  short_code: 1a2b3c
+
+two:
+  original_url: https://example.com/search?filters=type%3Aresearch%2Cyear%3A2024%2Clanguage%3Aenglish&sort=relevance&session_id=1234567890abcdef1234567890abcdef&referrer=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dai%2Bhealthcare&tracking_id=abcde12345fghij67890klmnopqrstu&extra_param_1=this_is_a_very_long_value_to_test_url_length_handling_and_to_see_if_any_system_breaks_or_throws_errors_when_processing_it&extra_param_2=another_extremely_long_value_that_contains_numbers_1234567890_and_symbols_%40%23%24%25%5E%26*()
+  short_code: 4d5e6f

@@ -31,4 +31,6 @@ end
 # Herramientas solo para test
 group :test do
   gem "faker"             # Datos falsos para pruebas
+  gem "shoulda-matchers"  # Matchers para RSpec
+  gem "byebug"
 end

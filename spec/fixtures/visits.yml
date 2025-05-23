@@ -1,0 +1,6 @@
+first_visit:
+  short_url: one
+  ip_address: 192.168.1.1
+  user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+  referrer: https://twitter.com
+  country: Colombia
