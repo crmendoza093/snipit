@@ -1,0 +1,72 @@
+<div class="page-header mb-4">
+  <h1>Crear enlace corto</h1>
+  <p class="text-medium">Acorta tus URLs largas para compartirlas fácilmente</p>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: @short_url, url: short_urls_path, local: true) do |form| %>
+      <% if @short_url&.errors&.any? %>
+        <div class="alert alert-error mb-4">
+          <h4 class="mb-2"><%= pluralize(@short_url.errors.count, "error") %> impidieron acortar esta URL:</h4>
+          <ul class="ml-4">
+            <% @short_url.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div class="form-group">
+        <%= form.label :original_url, "Ingresa la URL que deseas acortar", class: "form-label" %>
+        <%= form.text_field :original_url, class: "form-input", 
+            placeholder: "https://ejemplo.com/mi-url-larga", 
+            autofocus: true %>
+      </div>
+      
+      <div class="form-group mb-0">
+        <%= form.submit "Acortar URL", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% if @recent_urls.any? %>
+  <div class="mt-5">
+    <h2 class="mb-4">Enlaces recientes</h2>
+    
+    <% @recent_urls.each do |url| %>
+      <div class="url-card">
+        <div>
+          <p class="url-card-original"><%= url.original_url %></p>
+          <p class="url-card-short"><%= url.host %></p>
+        </div>
+        <div class="url-card-actions">
+          <a href="<%= short_url_url(url.short_code) %>" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" title="Visitar URL">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          
+          <button class="btn btn-secondary" onclick="copyUrl('<%= short_url_url(url.short_code) %>')" title="Copiar al portapapeles">
+            <i class="fas fa-copy"></i>
+          </button>
+          
+          <a href="<%= short_url_stats_path(url.short_code) %>" class="btn btn-secondary" title="Ver estadísticas">
+            <i class="fas fa-chart-bar"></i>
+          </a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+function copyUrl(url) {
+  var tempInput = document.createElement("input");
+  tempInput.value = url;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+  alert("URL copiada al portapapeles");
+}
+</script> 

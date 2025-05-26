@@ -1,0 +1,103 @@
+<div class="stats-header">
+  <div>
+    <h1 class="mb-2">Estadísticas de enlace</h1>
+    <p class="stats-url">
+      <%= @short_url.original_url %>
+    </p>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="stats-card">
+    <div class="stats-number"><%= @stats[:total_visits] %></div>
+    <div class="stats-label">Visitas totales</div>
+  </div>
+  
+  <% if @stats[:top_country].present? %>
+    <div class="stats-card">
+      <div class="stats-number"><%= @stats[:top_country] %></div>
+      <div class="stats-label">País más frecuente</div>
+    </div>
+  <% end %>
+
+  <div class="stats-card">
+    <div class="stats-label">Enlace creado hace</div>
+    <div class="stats-number"><%= time_ago_in_words(@stats[:created_at]) %></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="mb-4">Historial de visitas</h2>
+  
+  <% if @stats[:visits].any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>IP</th>
+            <th>País</th>
+            <th>Navegador</th>
+            <th>Referente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stats[:visits].each do |visit| %>
+            <tr>
+              <td><%= visit.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+              <td><%= visit.ip_address %></td>
+              <td><%= visit.country || "Desconocido" %></td>
+              <td>
+                <span title="<%= visit.user_agent %>">
+                  <%= visit.user_agent.to_s.truncate(30) %>
+                </span>
+              </td>
+              <td><%= visit.referrer || "Directo" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="alert info">
+      Este enlace aún no ha recibido visitas.
+    </div>
+  <% end %>
+</div>
+
+<div class="card mt-4">
+  <h2 class="mb-4">Distribución por país</h2>
+  
+  <% if @stats[:visits].any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>País</th>
+            <th>Visitas</th>
+            <th>Porcentaje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stats[:country_stats].each do |country, count| %>
+            <tr>
+              <td><%= country || "Desconocido" %></td>
+              <td><%= count %></td>
+              <td><%= number_to_percentage((count.to_f / @stats[:total_visits]) * 100, precision: 1) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="alert info">
+      Este enlace aún no ha recibido visitas.
+    </div>
+  <% end %>
+</div>
+
+<div class="mt-4">
+  <a href="<%= root_path %>" class="btn btn-secondary">
+    <i class="fas fa-arrow-left mr-2"></i> Volver
+  </a>
+</div>
