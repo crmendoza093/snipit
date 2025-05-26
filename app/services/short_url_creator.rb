@@ -4,9 +4,14 @@ class ShortUrlCreator
   end
 
   def call
-    ShortUrl.find_or_create_by(original_url: @original_url) do |short_url|
+    short_url = ShortUrl.find_or_initialize_by(original_url: @original_url)
+
+    if short_url.new_record?
       short_url.short_code = generate_unique_code
+      short_url.save
     end
+
+    short_url
   end
 
   private

@@ -7,14 +7,15 @@ class ShortUrlsController < ApplicationController
 
   def create
     service = ShortUrlCreator.new(original_url: short_url_params[:original_url])
-
-    if service.call
+    @short_url = service.call
+  
+    if @short_url.persisted?
       redirect_to root_path, notice: "URL acortada con éxito"
     else
-      flash[:alert] = "Error al acortar la URL"
+      flash.now[:alert] = "Error al acortar la URL"
       render :new, status: :unprocessable_entity
     end
-  end
+  end  
 
   def stats
     @short_url = ShortUrl.find_by!(short_code: params[:short_code])
