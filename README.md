@@ -8,7 +8,6 @@ Clon de TinyURL construido con Ruby on Rails. Su objetivo es acortar URLs y rast
 - Redirección instantánea a la URL original.
 - Visualización de información y métricas de cada URL acortada.
 - Registro de visitas con tracking de IPs.
-- Validación robusta de URLs para prevenir phishing y ataques.
 - Interfaz minimalista y fácil de usar.
 
 ## Arquitectura
@@ -23,8 +22,8 @@ Snipit sigue principios de diseño limpio y modular:
 ## Rutas principales 
 
 - `/` - Página principal donde los usuarios ingresan URLs para acortar
-- `/:token` - Redirecciona al usuario a la URL original
-- `/:token/info` - Muestra estadísticas de la URL acortada (visitas, ubicaciones, etc.)
+- `/:short_url` - General la url corta
+- `/:short_url/stats` - Muestra estadísticas de la URL acortada (visitas, ubicaciones, etc.)
 
 ## Estructura del Proyecto
 
@@ -33,11 +32,7 @@ app/
 ├── controllers/        # Manejo de rutas HTTP
 ├── models/             # Modelos de datos
 ├── services/           # Lógica de dominio
-├── validators/         # Validaciones personalizadas
-├── serializers/        # Formato de respuestas API
 └── views/              # Plantillas de interfaz
-    ├── home/
-    └── urls/
 ```
 
 ## Configuración y desarrollo
@@ -79,4 +74,4 @@ bundle exec rspec
 1. Visita http://localhost:3000
 2. Ingresa la URL que deseas acortar en el campo correspondiente
 3. Copia el enlace acortado generado y compártelo
-4. Para ver estadísticas de uso, añade `/info` al final de la URL acortada
+4. Para ver estadísticas de uso, añade `/stats` al final de la URL acortada
