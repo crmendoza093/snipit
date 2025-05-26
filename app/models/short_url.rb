@@ -5,6 +5,6 @@ class ShortUrl < ApplicationRecord
   validates :short_code, presence: true, uniqueness: true
 
   def host
-    @host = "https://#{ENV['HOST']}/#{short_code}"
+    @host = "http://#{ENV['HOST']}/#{short_code}"
   end
 end
