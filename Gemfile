@@ -20,6 +20,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false # Linter Ruby/Rails con estilo recomendado
   gem "rspec-rails"                    # Framework de testing
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+  gem "byebug"
 end
 
 # Herramientas solo para desarrollo
@@ -32,5 +33,7 @@ end
 group :test do
   gem "faker"             # Datos falsos para pruebas
   gem "shoulda-matchers"  # Matchers para RSpec
-  gem "byebug"
 end
+
+gem "geocoder"
+gem 'faker'
