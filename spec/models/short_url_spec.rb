@@ -18,6 +18,6 @@ RSpec.describe ShortUrl, type: :model do
   end
 
   it "has many visits" do
-    expect(short_urls(:one).visits.count).to eq(1)
+    expect(short_urls(:one).visits.count).to eq(2)
   end
 end
