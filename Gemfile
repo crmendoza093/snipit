@@ -37,3 +37,4 @@ end
 
 gem "geocoder"
 gem 'faker'
+gem 'rack-attack'
