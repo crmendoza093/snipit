@@ -16,7 +16,7 @@ RSpec.describe ShortUrlCreator do
 
     it "returns the same short URL if it already exists" do
       existing = ShortUrl.find_by(original_url: original_url)
-      
+
       creator = described_class.new(original_url: original_url)
       result = creator.call
 

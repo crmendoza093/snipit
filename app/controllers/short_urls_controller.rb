@@ -1,5 +1,5 @@
 class ShortUrlsController < ApplicationController
-  before_action :set_recent_urls, only: [:new, :create]
+  before_action :set_recent_urls, only: [ :new, :create ]
 
   def new
     @short_url = ShortUrl.new
@@ -15,7 +15,7 @@ class ShortUrlsController < ApplicationController
       flash.now[:alert] = "Error al acortar la URL"
       render :new, status: :unprocessable_entity
     end
-  end  
+  end
 
   def stats
     @short_url = ShortUrl.find_by!(short_code: params[:short_code])

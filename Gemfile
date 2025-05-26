@@ -36,5 +36,5 @@ group :test do
 end
 
 gem "geocoder"
-gem 'faker'
-gem 'rack-attack'
+gem "faker"
+gem "rack-attack"

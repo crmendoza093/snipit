@@ -4,8 +4,8 @@ RSpec.describe VisitTracker, type: :service do
   let(:short_url) { ShortUrl.create!(original_url: "https://example.com", short_code: "abc123") }
 
   let(:fake_request) do
-    instance_double("ActionDispatch::Request", 
-      remote_ip: "8.8.8.8", 
+    instance_double("ActionDispatch::Request",
+      remote_ip: "8.8.8.8",
       user_agent: "test",
       referer: "https://referrer.com"
     )
