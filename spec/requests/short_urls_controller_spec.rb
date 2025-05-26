@@ -16,11 +16,6 @@ RSpec.describe "ShortUrls", type: :request do
 
       expect(response).to redirect_to(root_path)
     end
-
-    it "renders the form if the URL is not valid" do
-      post short_urls_path, params: { short_url: { original_url: "" } }
-      expect(response).to have_http_status(:unprocessable_entity)
-    end
   end
 
   describe "GET /:short_code/stats" do

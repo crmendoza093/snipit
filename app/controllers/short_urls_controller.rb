@@ -6,12 +6,12 @@ class ShortUrlsController < ApplicationController
   end
 
   def create
-    @short_url = ShortUrl.new(short_url_params)
-    @short_url.short_code = generate_unique_code
+    service = ShortUrlCreator.new(original_url: short_url_params[:original_url])
 
-    if @short_url.save
+    if service.call
       redirect_to root_path, notice: "URL acortada con éxito"
     else
+      flash[:alert] = "Error al acortar la URL"
       render :new, status: :unprocessable_entity
     end
   end
@@ -25,13 +25,6 @@ class ShortUrlsController < ApplicationController
 
   def short_url_params
     params.require(:short_url).permit(:original_url)
-  end
-
-  def generate_unique_code
-    loop do
-      code = SecureRandom.alphanumeric(7)
-      break code unless ShortUrl.exists?(short_code: code)
-    end
   end
 
   def set_recent_urls
