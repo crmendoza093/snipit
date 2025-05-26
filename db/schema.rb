@@ -19,7 +19,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_23_205512) do
     t.string "short_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["short_code"], name: "index_short_urls_on_short_code", unique: true
+    t.index ["original_url"], name: "index_short_urls_on_original_url"
+    t.index ["short_code"], name: "index_short_urls_on_short_code"
   end
 
   create_table "visits", force: :cascade do |t|
